@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | My Space</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e6dcff, #dce8ff, #f2e4ff);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .box {
+            background: white;
+            width: 320px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px #9c8bc555;
+        }
+        h1 { text-align: center; color: #7955c9; }
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            margin: 9px 0;
+            border: 1px solid #d8ccef;
+            border-radius: 9px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            border: 0;
+            border-radius: 9px;
+            background: #8464d8;
+            color: white;
+            cursor: pointer;
+        }
+        p { text-align: center; }
+        a { color: #7955c9; }
+        .message { color: #b42318; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>💜 My Space</h1>
+        <p>Welcome back!</p>
+
+        {% for message in get_flashed_messages() %}
+            <p class="message">{{ message }}</p>
+        {% endfor %}
+
+        <form method="POST">
+            <input type="email" name="email"
+                   placeholder="Email address" required>
+
+            <input type="password" name="password"
+                   placeholder="Password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p>New user? <a href="{{ url_for('register') }}">Register</a></p>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

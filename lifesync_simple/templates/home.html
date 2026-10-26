@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | LifeSync{% endblock %}
+{% block content %}
+<linl rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">  
+<div class="hero">
+  <h1>Plan your day, one step at a time 💜</h1>
+  <p>Studies, career and self-care — keep your daily plans in one simple place.</p>
+</div>
+<div class="stats">
+  <div class="stat"><strong>{{ total }}</strong><span class="small">Today's activities</span></div>
+  <div class="stat"><strong>{{ done }}</strong><span class="small">Completed</span></div>
+  <div class="stat"><strong>{% if total %}{{ (done * 100 / total)|round|int }}%{% else %}0%{% endif %}</strong><span class="small">Daily progress</span></div>
+</div>
+<div class="columns">
+  <section class="card">
+    <h2>📚 Studies & Career</h2>
+    <p class="small">Python, SQL, interview practice and job search.</p>
+    <a class="button" href="/studies">Open page</a>
+  </section>
+  <section class="card">
+    <h2>🌿 Self-care & Wellness</h2>
+    <p class="small">Skincare, exercise and meditation.</p>
+    <a class="button" href="/wellness">Open page</a>
+  </section>
+</div>
+<section class="dailyactivity">
+  <h2>Today's activities</h2>
+  {% for task in tasks %}
+  <div class="task">
+    <form method="post" action="/toggle/{{ task.id }}"><input type="checkbox" {% if task.done %}checked{% endif %} onchange="this.form.submit()"></form>
+    <div class="task-title {% if task.done %}done{% endif %}">{{ task.title }}<div class="small">{{ task.time }} · {{ task.category }}</div></div>
+    <form method="post" action="/delete/{{ task.id }}"><button type="submit">Delete</button></form>
+  </div>
+  {% else %}<p class="small">No activities today. Add your first one below.</p>{% endfor %}
+</section>
+<section class="card">
+  <h2>＋ Add an activity</h2>
+  <form method="post" action="/add">
+    <label>Activity name</label><input name="title" required placeholder="Example: Revise Python loops">
+    <div class="columns">
+      <div><label>Topic</label><select name="category">
+        <option>Study</option><option>Interview</option><option>Job Search</option>
+        <option>Skincare</option><option>Exercise</option><option>Meditation</option><option>Personal</option>
+      </select></div>
+      <div><label>Date</label><input type="date" name="day" value="{{ today }}" required></div>
+    </div>
+    <label>Time</label><input type="time" name="time" value="09:00" required>
+    <button type="submit">Save activity</button>
+
+  </form>
+</section>
+  
+<center>  
+<div class="money-options">
+<button><a href="{{ url_for('expenses') }}" class="money-card">
+        <div class="money-icon">💸</div>
+        <h3>Daily Expenses</h3></a>
+        <p>Track your daily spending</p>
+        <span>Open Expenses →</span>
+    </button>
+</center>    
+<br><br>
+<center>
+  <button>
+    <a href="{{ url_for('savings') }}" class="money-card">
+        <div class="money-icon">💰</div>
+        <h3>Savings Tracker</h3></a>
+        <p>Manage your savings goals</p>
+        <span>Open Savings →</span>
+    
+    </button>
+
+</div>
+
+{% endblock %}

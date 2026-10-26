@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savings | My Space</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #eee7ff, #e1edff);
+            margin: 0;
+            padding: 30px;
+            color: #40345f;
+        }
+
+        .container {
+            max-width: 550px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px #b9addb55;
+        }
+
+        h1 {
+            color: #7955c9;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            margin-top: 7px;
+            border: 1px solid #d8ccef;
+            border-radius: 10px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 13px;
+            background: #8464d8;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        a {
+            color: #7955c9;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="/">← Back to My Space</a>
+
+        <h1>🐷 Savings Tracker</h1>
+        <p>Set a goal and plan how much you want to save.</p>
+
+        <form method="POST" action="/savings">
+            <label>Savings Goal (₹)</label>
+            <input type="number" name="goal"
+                   min="0.01" step="0.01" required>
+
+            <label>Amount Saved (₹)</label>
+            <input type="number" name="saved"
+                   min="0" step="0.01" required>
+
+            <button type="submit">Save Goal</button>
+        </form>
+    </div>
+</body>
+</html>

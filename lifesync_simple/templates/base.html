@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}My_Own_Space{% endblock %}</title>
+<style>
+*
+{box-sizing:border-box}
+body{margin:0;background: linear-gradient(135deg, #7d3cb9, #dce8ff, #7810da);}
+header{background:white;padding:18px 7%;border-bottom:1px solid #e4e8fb;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-size:24px;font-weight:bold;color:#6555cf}
+nav{display:flex;gap:10px;flex-wrap:wrap}
+nav a{color:#59618c;text-decoration:none;padding:9px 12px;border-radius:9px;font-size:14px}
+nav a:hover{background:#eeebff;color:#6252d0}
+main{max-width:1050px;margin:28px auto;padding:0 18px}
+.hero{padding:25px;border-radius:17px;background:linear-gradient(120deg,#5278ed,#9278e8);color:white;margin-bottom:20px}
+.hero h1{margin:0 0 8px;font-size:27px}.hero p{margin:0;line-height:1.5}
+.columns{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{background:white;border:1px solid #e4e8fb;border-radius:15px;padding:18px;margin-bottom:16px}
+h2{font-size:18px;margin:0 0 14px}
+a.button,button{border:0;border-radius:9px;background:#6e61dc;color:white;padding:10px 13px;text-decoration:none;cursor:pointer;font-size:13px}
+input,select{width:100%;padding:11px;border:1px solid #dce1f6;border-radius:9px;margin:5px 0 12px;font-size:14px}
+label{font-size:12px;font-weight:bold;color:#626b91}
+.task{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #eef0fa}
+.task:last-child{border-bottom:0}.task form{margin:0}.task input{width:auto;margin:0}
+.task-title{flex:1;font-size:14px}.done{text-decoration:line-through;color:#9ba1bd}
+.small{font-size:12px;color:#7981a7;margin-top:5px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.stat{flex:1;min-width:120px;background:white;border:1px solid #e4e8fb;padding:15px;border-radius:13px}
+.stat strong{display:block;font-size:24px;margin-bottom:5px}
+@media(max-width:650px){.columns{grid-template-columns:1fr}header{align-items:flex-start}nav{gap:3px}.hero h1{font-size:23px}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">✦ My_Own_Space</div>
+  <nav>
+    <a href="/">Dashboard</a>
+    <a href="/studies">Studies & Career</a>
+    <a href="/wellness">Self-care</a>
+    <a href="/schedule">Schedule & Reminders</a>
+  </nav>
+</header>
+<main>{% block content %}{% endblock %}</main>
+</body>
+</html>

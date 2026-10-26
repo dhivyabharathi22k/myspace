@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Schedule & Reminders | LifeSync{% endblock %}
+{% block content %}
+<div class="hero"><h1>Schedule & Reminders 🗓️</h1><p>See all your planned activities in date and time order.</p></div>
+<section class="card">
+  <h2>All upcoming activities</h2>
+  {% for task in tasks %}
+  <div class="task">
+    <form method="post" action="/toggle/{{ task.id }}"><input type="checkbox" {% if task.done %}checked{% endif %} onchange="this.form.submit()"></form>
+    <div class="task-title {% if task.done %}done{% endif %}">{{ task.title }}<div class="small">{{ task.day }} · {{ task.time }} · {{ task.category }}</div></div>
+    <form method="post" action="/delete/{{ task.id }}"><button type="submit">Delete</button></form>
+  </div>
+  {% else %}<p class="small">No schedule yet.</p>{% endfor %}
+</section>
+{% endblock %}

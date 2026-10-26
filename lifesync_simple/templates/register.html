@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | My Space</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #7455c0, #1e51af, #7a1cd3);
+            border-radius: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+       .box {
+    width: 320px;
+    padding: 30px;
+    background: linear-gradient(135deg, #acb9f3, #764ba2);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+        h1 { text-align: center; color: #7955c9; }
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            margin: 9px 0;
+            border: 1px solid #d8ccef;
+            border-radius: 9px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            border: 0;
+            border-radius: 9px;
+            background: #8464d8;
+            color: white;
+            cursor: pointer;
+        }
+        p { text-align: center; }
+        a { color: #7955c9; }
+        .message { color: #b42318; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>💜 Join My Space</h1>
+        <p>Create your account</p>
+
+        {% for message in get_flashed_messages() %}
+            <p class="message">{{ message }}</p>
+        {% endfor %}
+
+        <form method="POST">
+            <input type="text" name="name"
+                   placeholder="Your name" required>
+
+            <input type="email" name="email"
+                   placeholder="Email address" required>
+
+            <input type="password" name="password"
+                   placeholder="Create password"
+                   minlength="8" required>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <p>Already registered? <a href="{{ url_for('login') }}">Login</a></p>
+    </div>
+</body>
+</html>

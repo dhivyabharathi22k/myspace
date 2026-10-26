@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Expenses | My Space</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #eee7ff, #e1edff);
+            margin: 0;
+            padding: 30px;
+            color: #40345f;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px #b9addb55;
+        }
+
+        h1 {
+            color: #7955c9;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            margin-top: 7px;
+            border: 1px solid #d8ccef;
+            border-radius: 10px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 13px;
+            background: #8464d8;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        a {
+            color: #7955c9;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="/">← Back to My Space</a>
+
+        <h1>💸 Daily Expenses</h1>
+        <p>Keep track of your daily spending.</p>
+
+        <form method="POST" action="/expenses">
+            <label>Expense Category</label>
+            <select name="category" required>
+                <option value="">Choose category</option>
+                <option value="Auto / Transport">Auto / Transport</option>
+                <option value="Food">Food</option>
+                <option value="Movies">Movies & Entertainment</option>
+                <option value="Others">Others</option>
+            </select>
+
+            <label>Amount (₹)</label>
+            <input type="number" name="amount"
+                   min="0.01" step="0.01" required>
+
+            <label>Date</label>
+            <input type="date" name="date" required>
+
+            <label>Notes</label>
+            <textarea name="notes"
+                      placeholder="What did you spend on?"></textarea>
+
+            <button type="submit">Save Expense</button>
+        </form>
+    </div>
+</body>
+</html>
